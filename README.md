@@ -24,6 +24,7 @@ in terminal navigate to phase0
 brew services start kafka
 
 python3 producers.py
+
 python3 consumers.py
 
 ## ZipBank Project
