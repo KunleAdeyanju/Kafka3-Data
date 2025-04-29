@@ -19,6 +19,12 @@ You need to run `zookeeper` first in a terminal by itself.
 Then run `kafka` in a different terminal.
 
 Then run the `Producers` and `consumers` each in their own terminals. (as needed)
+Steps needed for phase 0:
+in terminal navigate to phase0
+brew services start kafka
+
+python3 producers.py
+python3 consumers.py
 
 ## ZipBank Project
 
