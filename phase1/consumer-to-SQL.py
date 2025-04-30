@@ -3,6 +3,7 @@ from json import loads
 import sqlalchemy as db 
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+import statistics
 
 
 engine = db.create_engine('sqlite:///consumerdb.db') 
@@ -68,6 +69,23 @@ class XactionConsumer:
             else:
                 self.custBalances[message['custid']] -= message['amt']
             print(self.custBalances)
+    
+    def summaryconsumer(self):
+
+        total_deposits, total_withdrawal = []
+        for message in self.consumer:
+            message = message.value
+            if message['type'] == 'Dep':
+                total_deposits.append(message['amt'])
+                dep_avg = statistics.mean(total_deposits)
+                dep_stdev = statistics.stdev(total_deposits)
+            elif message['type'] == 'Wth':
+                total_withdrawal.append(message['amt'])
+                with_avg = statistics.mean(total_withdrawal)
+                with_stdev = statistics.mean(total_withdrawal)
+        
+
+
 
 
 
